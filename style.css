@@ -1,0 +1,14 @@
+body {
+  font-family: serif;
+  max-width: 600px;
+  margin: 4rem auto;
+  line-height: 1.8;
+  font-size: 1rem;
+  color: #222;
+  background: #fff;
+}
+nav a {
+  margin-right: 1rem;
+  text-decoration: none;
+  color: #444;
+}
