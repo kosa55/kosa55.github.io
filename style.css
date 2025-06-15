@@ -1,7 +1,8 @@
+/* 全体フォントはクラシック（EB Garamond） */
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'EB Garamond', serif;
   background: white;
   color: black;
 }
@@ -15,18 +16,27 @@ nav {
   margin-bottom: 20px;
 }
 
+/* リンクのデフォルトスタイルを削除 */
 nav a {
   margin-right: 15px;
   text-decoration: none;
   color: black;
 }
 
+/* ？用のフォントとアニメーション感 */
 .amatic {
   font-family: 'Amatic SC', cursive;
-  font-size: 24px;
+  font-size: 32px;
+  display: inline-block;
+  animation: float 2.5s ease-in-out infinite;
 }
 
-/* popup styling */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-4px) rotate(-2deg); }
+}
+
+/* popup 見た目 */
 #popup {
   position: fixed;
   top: 0;
@@ -67,11 +77,5 @@ nav a {
   font-weight: bold;
   color: white;
   user-select: none;
-  transition: color 0.2s ease;
   text-shadow: 0 0 5px black;
-  z-index: 10000;
-}
-
-#close:hover {
-  color: #ddd;
 }
