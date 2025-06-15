@@ -1,89 +1,51 @@
-/* ===== 全体のフォントをクラシックに ===== */
-body {
-  margin: 0;
-  padding: 0;
-  font-family: Georgia, 'Times New Roman', serif;
-  background: white;
-  color: black;
-}
-
-.container {
-  width: fit-content;
-  margin: 100px auto 0 100px; /* やや左寄り */
-}
-
-nav {
-  margin-bottom: 20px;
-}
-
-nav a {
-  margin-right: 15px;
-  text-decoration: none;
-  color: black;
-  font-weight: normal;
-  font-size: 1rem;
-  transition: color 0.3s ease;
-}
-
-nav a:hover {
-  color: #555;
-}
-
-/* ===== 「？」マークだけ手書き風フォント ===== */
-.photo-link {
-  font-family: 'Amatic SC', cursive;
-  font-size: 2.4rem;
-  line-height: 1;
-  cursor: pointer;
-  user-select: none;
-  /* 少し傾けてグニョっと感をプラス */
-  display: inline-block;
-  transform: rotate(-8deg);
-  transition: transform 0.2s ease;
-}
-
-.photo-link:hover {
-  color: #888;
-  transform: rotate(0deg) scale(1.1);
-}
-
-/* ===== ポップアップ ===== */
+/* ポップアップの背景を薄く暗くしてフォーカスを出す */
 #popup {
   position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  border: 1px solid #ccc;
-  padding: 10px;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.6); /* 暗い半透明背景 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 9999;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-  position: relative;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 #popup.hidden {
   display: none;
 }
 
-#popup img {
-  max-width: 60vw;
-  max-height: 60vh;
+/* 写真を囲むフレーム */
+#popup-img {
+  max-width: 80vw;
+  max-height: 80vh;
+  border: 12px solid #f0f0f0; /* ふんわり明るい額縁 */
+  box-shadow:
+    0 0 10px rgba(0, 0, 0, 0.5),
+    0 0 30px rgba(255, 255, 255, 0.6) inset; /* 内側も光が差し込む感じ */
+  border-radius: 10px;
+  background: white;
   display: block;
-  border-radius: 6px;
 }
 
+/* 閉じるボタン */
 #close {
   position: absolute;
-  top: 5px;
-  right: 10px;
+  top: 25px;
+  right: 25px;
   cursor: pointer;
-  font-size: 22px;
+  font-size: 30px;
   font-weight: bold;
-  color: #333;
+  color: white;
   user-select: none;
   transition: color 0.2s ease;
+  text-shadow: 0 0 5px black;
+  z-index: 10000;
 }
 
 #close:hover {
-  color: #000;
+  color: #ddd;
 }
