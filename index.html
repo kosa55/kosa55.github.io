@@ -1,34 +1,47 @@
-<nav>
-  <a href="index.html">home</a>
-  <a href="info.html">info</a>
-  <a href="objects.html">objects</a>
-  <a href="#" class="photo-link">？</a>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mayukokosaza.org</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index.html">home</a>
+      <a href="info.html">info</a>
+      <a href="objects.html">objects</a>
+      <a href="mailto:mayukokosaza@gmail.com">contact</a>
+      <a href="#" class="photo-link">？</a>
+    </nav>
 
-<h1>:)</h1>
-<p>email:mayukokosaza@gmail.com</p>
+    <h1>:)</h1>
+  </div>
 
-<!-- ポップアップ用 -->
-<div id="popup" class="hidden">
-  <span id="close">&times;</span>
-  <img id="popup-img" src="" alt="popup image">
-</div>
-<script>
-  const images = ['photo1.jpg', 'photo2.jpg']; // 画像ファイル名
-  const photoLink = document.querySelector('.photo-link');
-  const popup = document.getElementById('popup');
-  const popupImg = document.getElementById('popup-img');
-  const close = document.getElementById('close');
+  <!-- popup -->
+  <div id="popup" class="hidden">
+    <span id="close">&times;</span>
+    <img id="popup-img" src="" alt="popup image">
+  </div>
 
-  photoLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    const randomImage = images[Math.floor(Math.random() * images.length)];
-    popupImg.src = randomImage;
-    popup.classList.remove('hidden');
-  });
+  <script>
+    const images = ['photo1.jpg', 'photo2.jpg']; // 画像ファイル名
+    const photoLink = document.querySelector('.photo-link');
+    const popup = document.getElementById('popup');
+    const popupImg = document.getElementById('popup-img');
+    const close = document.getElementById('close');
 
-  close.addEventListener('click', () => {
-    popup.classList.add('hidden');
-    popupImg.src = '';
-  });
-</script>
+    photoLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      const randomImage = images[Math.floor(Math.random() * images.length)];
+      popupImg.src = randomImage;
+      popup.classList.remove('hidden');
+    });
+
+    close.addEventListener('click', () => {
+      popup.classList.add('hidden');
+      popupImg.src = '';
+    });
+  </script>
+</body>
+</html>
