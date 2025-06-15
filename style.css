@@ -1,7 +1,8 @@
+/* ===== 全体のフォントをクラシックに ===== */
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: Georgia, 'Times New Roman', serif;
   background: white;
   color: black;
 }
@@ -19,8 +20,34 @@ nav a {
   margin-right: 15px;
   text-decoration: none;
   color: black;
+  font-weight: normal;
+  font-size: 1rem;
+  transition: color 0.3s ease;
 }
 
+nav a:hover {
+  color: #555;
+}
+
+/* ===== 「？」マークだけ手書き風フォント ===== */
+.photo-link {
+  font-family: 'Amatic SC', cursive;
+  font-size: 2.4rem;
+  line-height: 1;
+  cursor: pointer;
+  user-select: none;
+  /* 少し傾けてグニョっと感をプラス */
+  display: inline-block;
+  transform: rotate(-8deg);
+  transition: transform 0.2s ease;
+}
+
+.photo-link:hover {
+  color: #888;
+  transform: rotate(0deg) scale(1.1);
+}
+
+/* ===== ポップアップ ===== */
 #popup {
   position: fixed;
   top: 50%;
@@ -31,6 +58,7 @@ nav a {
   padding: 10px;
   z-index: 9999;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  position: relative;
 }
 
 #popup.hidden {
@@ -40,6 +68,8 @@ nav a {
 #popup img {
   max-width: 60vw;
   max-height: 60vh;
+  display: block;
+  border-radius: 6px;
 }
 
 #close {
@@ -47,5 +77,13 @@ nav a {
   top: 5px;
   right: 10px;
   cursor: pointer;
-  font-size: 18px;
+  font-size: 22px;
+  font-weight: bold;
+  color: #333;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+#close:hover {
+  color: #000;
 }
