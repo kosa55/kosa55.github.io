@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
+  <meta charset="UTF-8" />
   <title>mayukokosaza.org</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet" />
 </head>
 <body>
   <div class="container">
@@ -12,7 +13,7 @@
       <a href="info.html">info</a>
       <a href="objects.html">objects</a>
       <a href="mailto:mayukokosaza@gmail.com">contact</a>
-      <a href="#" class="photo-link">？</a>
+      <a href="#" class="photo-link" title="Show random photo">？</a>
     </nav>
 
     <h1>:)</h1>
@@ -21,11 +22,11 @@
   <!-- popup -->
   <div id="popup" class="hidden">
     <span id="close">&times;</span>
-    <img id="popup-img" src="" alt="popup image">
+    <img id="popup-img" src="" alt="popup image" />
   </div>
 
   <script>
-    const images = ['photo1.jpg', 'photo2.jpg']; // 画像ファイル名
+    const images = ['photo1.jpg', 'photo2.jpg']; // 画像ファイル名の配列
     const photoLink = document.querySelector('.photo-link');
     const popup = document.getElementById('popup');
     const popupImg = document.getElementById('popup-img');
@@ -41,6 +42,13 @@
     close.addEventListener('click', () => {
       popup.classList.add('hidden');
       popupImg.src = '';
+    });
+
+    popup.addEventListener('click', (e) => {
+      if (e.target === popup) {
+        popup.classList.add('hidden');
+        popupImg.src = '';
+      }
     });
   </script>
 </body>
