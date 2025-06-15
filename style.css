@@ -12,3 +12,30 @@ nav a {
   text-decoration: none;
   color: #444;
 }
+#popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 10px;
+  border: 1px solid #ccc;
+  z-index: 1000;
+}
+
+#popup img {
+  max-width: 80vw;
+  max-height: 80vh;
+}
+
+#popup.hidden {
+  display: none;
+}
+
+#close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 20px;
+}
