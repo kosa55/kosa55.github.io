@@ -21,13 +21,12 @@ nav a {
   color: black;
 }
 
-/* 「？」のフォントをちょっと変に */
-.quirky-font {
-  font-family: 'Sniglet', cursive;
-  font-size: 18px;
+.amatic {
+  font-family: 'Amatic SC', cursive;
+  font-size: 24px;
 }
 
-/* フォトポップアップ */
+/* popup styling */
 #popup {
   position: fixed;
   top: 0;
