@@ -36,14 +36,14 @@ nav a {
 
   position: absolute;
   top: 40px;
-  right: 60px;
+  right: 40px; /* ここを60px → 40pxにして右寄せ */
 }
 
 /* ニコちゃんマーク :) のスタイル */
 h1 {
   position: absolute;
-  bottom: 40px;
-  right: 60px;
+  bottom: 60px;  /* 40px → 60pxに下げて離す */
+  right: 10px;   /* 60px → 10pxにしてさらに右寄せ */
   margin: 0;
   animation: float 3s ease-in-out infinite;
 }
