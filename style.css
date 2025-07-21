@@ -5,7 +5,6 @@ body {
   font-family: 'EB Garamond', serif;
   background: white;
   color: black;
-
   overflow-x: visible; /* 横にはみ出しも見えるように */
 }
 
@@ -34,11 +33,11 @@ nav a {
 .amatic {
   font-family: 'Amatic SC', cursive;
   font-size: 32px;
-  animation: float 2.5s ease-in-out infinite;
-
   position: absolute;
   top: 40px;
   right: -80px; /* 画面の右端から80px外にガチはみ出す */
+  animation: swing 3s ease-in-out infinite;
+  transform-origin: top center; /* 振り子の支点を上中央に */
 }
 
 /* ニコちゃんマーク :) のスタイル */
@@ -47,17 +46,15 @@ h1 {
   bottom: 60px;
   right: -120px; /* もっと右に120pxはみ出す */
   margin: 0;
-  animation: float 3s ease-in-out infinite;
+  animation: swing 3s ease-in-out infinite;
+  transform-origin: top center;
 }
 
-/* 浮遊感のアニメーション */
-@keyframes float {
-  0%, 100% {
-    transform: translateY(0) rotate(0deg);
-  }
-  50% {
-    transform: translateY(-4px) rotate(-2deg);
-  }
+/* 振り子風に左右に揺れるアニメーション */
+@keyframes swing {
+  0%   { transform: rotate(10deg); }
+  50%  { transform: rotate(-10deg); }
+  100% { transform: rotate(10deg); }
 }
 
 /* popup 見た目 */
