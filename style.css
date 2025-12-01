@@ -1,4 +1,6 @@
-/* 全体フォント */
+/* ---------------------------
+   全体フォントとボディ
+---------------------------- */
 body {
   margin: 0;
   padding: 0;
@@ -8,40 +10,53 @@ body {
   overflow-x: visible;
 }
 
-/* コンテンツベース */
+/* ---------------------------
+   コンテナ
+---------------------------- */
 .container {
-  position: relative;
+  position: relative; /* ？マーク用の基準 */
   width: fit-content;
   margin: 100px auto 0 100px;
 }
 
-/* ナビゲーション横並び */
+/* ---------------------------
+   ナビゲーション縦並び
+---------------------------- */
 nav {
   display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 15px;
+  flex-direction: column; /* 縦並び */
+  gap: 10px;              /* 各リンク間隔 */
+  position: relative;     /* 「？」絶対配置の基準 */
   margin-bottom: 20px;
 }
 
-/* ナビリンク */
-nav a {
-  text-decoration: none;
+nav a, .contact-text {
+  font-family: 'EB Garamond', serif;
+  font-size: 12pt;
   color: black;
+  text-decoration: none;
 }
 
-/* ？マークのスタイル */
+nav a:hover {
+  text-decoration: underline;
+}
+
+/* ---------------------------
+   ？マークのスタイル
+---------------------------- */
 .amatic {
   font-family: 'Amatic SC', cursive;
   font-size: 32px;
   position: absolute;
-  top: 40px;
-  right: -80px;
+  top: 0;                 /* nav の上端に合わせる */
+  right: -80px;           /* 右に浮かせる */
   animation: swing 3s ease-in-out infinite;
   transform-origin: top center;
 }
 
-/* ニコちゃんマーク :) */
+/* ---------------------------
+   ニコちゃんマーク :)
+---------------------------- */
 h1 {
   position: absolute;
   bottom: 60px;
@@ -51,14 +66,18 @@ h1 {
   transform-origin: top center;
 }
 
-/* 振り子アニメーション */
+/* ---------------------------
+   振り子アニメーション
+---------------------------- */
 @keyframes swing {
   0%   { transform: rotate(10deg); }
   50%  { transform: rotate(-10deg); }
   100% { transform: rotate(10deg); }
 }
 
-/* 写真ポップアップ */
+/* ---------------------------
+   写真ポップアップ
+---------------------------- */
 #popup {
   position: fixed;
   top: 0;
@@ -73,19 +92,23 @@ h1 {
   padding: 20px;
   box-sizing: border-box;
 }
+
 #popup.hidden {
   display: none;
 }
+
 #popup-img {
   max-width: 80vw;
   max-height: 80vh;
   border: 12px solid #f0f0f0;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5),
-              0 0 30px rgba(255,255,255,0.6) inset;
+  box-shadow:
+    0 0 10px rgba(0,0,0,0.5),
+    0 0 30px rgba(255,255,255,0.6) inset;
   border-radius: 10px;
   background: white;
   display: block;
 }
+
 #close {
   position: absolute;
   top: 25px;
@@ -98,7 +121,9 @@ h1 {
   text-shadow: 0 0 5px black;
 }
 
-/* contactポップアップ */
+/* ---------------------------
+   contactポップアップ
+---------------------------- */
 #contact-popup {
   position: fixed;
   top: 50%;
@@ -115,9 +140,11 @@ h1 {
   font-family: 'EB Garamond', serif;
   font-size: 10pt;
 }
+
 #contact-popup.hidden {
   display: none;
 }
+
 #contact-close {
   position: absolute;
   top: 5px;
@@ -126,4 +153,22 @@ h1 {
   font-size: 18px;
   font-weight: bold;
   color: black;
+}
+
+/* ---------------------------
+   メディアクエリ（スマホ対応）
+---------------------------- */
+@media (max-width: 600px) {
+  .amatic {
+    right: -40px;
+    font-size: 28px;
+  }
+
+  h1 {
+    right: -80px;
+  }
+
+  nav {
+    margin-left: 20px;
+  }
 }
