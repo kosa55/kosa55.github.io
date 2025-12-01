@@ -1,70 +1,71 @@
-/* 全体フォントはクラシック（EB Garamond） */
+/* 全体フォント */
 body {
   margin: 0;
   padding: 0;
   font-family: 'EB Garamond', serif;
   background: white;
   color: black;
-  overflow-x: visible; /* 横にはみ出しも見えるように */
+  overflow-x: visible;
 }
 
-/* コンテンツのベース */
+/* コンテンツベース */
 .container {
-  position: relative; /* ← これで「右に浮かせる」要素の基準に */
+  position: relative;
   width: fit-content;
   margin: 100px auto 0 100px;
 }
 
-/* ナビゲーションを縦並びに */
+/* ナビゲーション横並び */
 nav {
   display: flex;
-  flex-direction: column;
-  gap: 10px;
+  flex-direction: row;
+  align-items: center;
+  gap: 15px;
   margin-bottom: 20px;
 }
 
-/* ナビゲーションリンクのスタイル */
+/* ナビリンク */
 nav a {
   text-decoration: none;
   color: black;
 }
 
-/* ？マークのスタイルとアニメーション */
+/* ？マークのスタイル */
 .amatic {
   font-family: 'Amatic SC', cursive;
   font-size: 32px;
   position: absolute;
   top: 40px;
-  right: -80px; /* 画面の右端から80px外にガチはみ出す */
+  right: -80px;
   animation: swing 3s ease-in-out infinite;
-  transform-origin: top center; /* 振り子の支点を上中央に */
+  transform-origin: top center;
 }
 
-/* ニコちゃんマーク :) のスタイル */
+/* ニコちゃんマーク :) */
 h1 {
   position: absolute;
   bottom: 60px;
-  right: -120px; /* もっと右に120pxはみ出す */
+  right: -120px;
   margin: 0;
   animation: swing 3s ease-in-out infinite;
   transform-origin: top center;
 }
 
-/* 振り子風に左右に揺れるアニメーション */
+/* 振り子アニメーション */
 @keyframes swing {
   0%   { transform: rotate(10deg); }
   50%  { transform: rotate(-10deg); }
   100% { transform: rotate(10deg); }
 }
 
-/* popup 見た目 */
+/* 写真ポップアップ */
 #popup {
   position: fixed;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.6);
+  background: rgba(0,0,0,0.6);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -72,23 +73,19 @@ h1 {
   padding: 20px;
   box-sizing: border-box;
 }
-
 #popup.hidden {
   display: none;
 }
-
 #popup-img {
   max-width: 80vw;
   max-height: 80vh;
   border: 12px solid #f0f0f0;
-  box-shadow:
-    0 0 10px rgba(0, 0, 0, 0.5),
-    0 0 30px rgba(255, 255, 255, 0.6) inset;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5),
+              0 0 30px rgba(255,255,255,0.6) inset;
   border-radius: 10px;
   background: white;
   display: block;
 }
-
 #close {
   position: absolute;
   top: 25px;
@@ -99,4 +96,34 @@ h1 {
   color: white;
   user-select: none;
   text-shadow: 0 0 5px black;
+}
+
+/* contactポップアップ */
+#contact-popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: white;
+  padding: 15px 25px;
+  border-radius: 8px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+  z-index: 10000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'EB Garamond', serif;
+  font-size: 10pt;
+}
+#contact-popup.hidden {
+  display: none;
+}
+#contact-close {
+  position: absolute;
+  top: 5px;
+  right: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  color: black;
 }
