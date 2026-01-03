@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>mayukokosaza.org</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Favicon for browsers -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+  <!-- Apple Touch Icon (for iOS home screen) -->
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Amatic+SC:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <nav>
+      <a href="index.html">home</a>
+      <a href="info.html">info</a>
+      <a href="objects.html">objects</a>
+      <a href="mailto:mayukokosaza@hotmail.com">contact</a>
+      <a href="#" class="photo-link amatic">？</a>
+    </nav>
+
+    <h1>:)</h1>
+  </div>
+
+  <!-- popup -->
+  <div id="popup" class="hidden">
+    <span id="close">&times;</span>
+    <img id="popup-img" src="" alt="popup image">
+  </div>
+
+  <script>
+    const images = ['photo1.jpg', 'photo2.jpg'];
+    const photoLink = document.querySelector('.photo-link');
+    const popup = document.getElementById('popup');
+    const popupImg = document.getElementById('popup-img');
+    const close = document.getElementById('close');
+
+    photoLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      const randomImage = images[Math.floor(Math.random() * images.length)];
+      popupImg.src = randomImage;
+      popup.classList.remove('hidden');
+    });
+
+    close.addEventListener('click', () => {
+      popup.classList.add('hidden');
+      popupImg.src = '';
+    });
+  </script>
+</body>
+</html>
