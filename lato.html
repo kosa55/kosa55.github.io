@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>lato</title>
+</head>
+
+<body style="margin:0; font-family:lato; overflow:hidden;">
+  <a href="../objects.html" style="position:fixed; top:20px; left:20px; z-index:9999; text-decoration:none; color:black; font-size:18px;">☜</a>
+
+  <div id="field" style="position:fixed; inset:0;">
+
+    <!-- data-text がある → タップで文字 -->
+    <img class="tile" src="img1.jpg" style="width:120px;"
+         data-text="tape loop:, wood, radio cassette player and glass, 2024.">
+
+    <!-- data-link がある → タップでリンク -->
+    <img class="tile" src="img2.jpg" style="width:130px;"
+         data-link="https://www.youtube.com/watch?v=LrWdoKO426M">
+
+    <!-- 何も無い → ただドラッグできる -->
+    <img class="tile" src="img3.jpg" style="width:110px;">
+
+    <img class="tile" src="img4.jpg" style="width:60px;">
+
+    <img class="tile" src="img5.jpg" style="width:140px;"
+         data-link="https://www.youtube.com/watch?v=fQi6n08PLVE">
+
+    <img class="tile" src="img6.jpg" style="width:100px;">
+
+    <img class="tile" src="img7.jpg" style="width:90px;">
+
+  </div>
+
+  <!-- 文字表示（小さく） -->
+  <div id="note" style="
+    position:fixed;
+    left:20px;
+    bottom:20px;
+    max-width:70vw;
+    font-size:12px;
+    line-height:1.4;
+    background:rgba(255,255,255,0.85);
+    padding:8px 10px;
+    display:none;
+    z-index:9999;
+  "></div>
+
+  <script>
+    const tiles = [...document.querySelectorAll('.tile')];
+    const note = document.getElementById('note');
+
+    function scatter(el) {
+      el.style.position = 'absolute';
+      el.style.left = (20 + Math.random() * 60) + 'vw';
+      el.style.top  = (25 + Math.random() * 55) + 'vh';
+      el.style.userSelect = 'none';
+      el.style.webkitUserDrag = 'none';
+      el.style.touchAction = 'none';
+      el.style.cursor = 'grab';
+      el.draggable = false;
+    }
+    tiles.forEach(scatter);
+
+    let topZ = 10;
+
+    tiles.forEach((el) => {
+      let startX = 0, startY = 0;
+      let baseLeft = 0, baseTop = 0;
+      let moved = false;
+
+      el.addEventListener('pointerdown', (e) => {
+        el.setPointerCapture(e.pointerId);
+        el.style.zIndex = (++topZ).toString();
+        el.style.cursor = 'grabbing';
+
+        const rect = el.getBoundingClientRect();
+        baseLeft = rect.left;
+        baseTop = rect.top;
+
+        startX = e.clientX;
+        startY = e.clientY;
+        moved = false;
+      });
+
+      el.addEventListener('pointermove', (e) => {
+        const dx = e.clientX - startX;
+        const dy = e.clientY - startY;
+
+        // ちょっとでも動いたら「ドラッグ」と判定（タップ誤爆防止）
+        if (Math.abs(dx) > 6 || Math.abs(dy) > 6) moved = true;
+
+        el.style.left = (baseLeft + dx) + 'px';
+        el.style.top  = (baseTop + dy) + 'px';
+      });
+
+      el.addEventListener('pointerup', () => {
+        el.style.cursor = 'grab';
+
+        // 動いてない＝タップ扱い
+        if (!moved) {
+          const text = el.getAttribute('data-text');
+          const link = el.getAttribute('data-link');
+
+          if (text) {
+            note.textContent = text;
+            note.style.display = 'block';
+          } else if (link) {
+            window.open(link, '_blank', 'noopener,noreferrer');
+          } else {
+            // 何もない画像をタップしたら note を消す（任意）
+            note.style.display = 'none';
+          }
+        }
+      });
+
+      el.addEventListener('pointercancel', () => {
+        el.style.cursor = 'grab';
+      });
+    });
+
+    // note 自体をタップしたら消す
+    note.addEventListener('click', () => {
+      note.style.display = 'none';
+    });
+  </script>
+</body>
+</html>
