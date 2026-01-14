@@ -30,24 +30,7 @@ nav a {
 }
 
 /* ？マークのスタイルとアニメーション */
-.amatic {
-  font-family: 'Amatic SC', cursive;
-  font-size: 32px;
-  position: absolute;
-  top: 40px;
-  right: -80px; /* 画面の右端から80px外にガチはみ出す */
-  animation: swing 3s ease-in-out infinite;
-  transform-origin: top center; /* 振り子の支点を上中央に */
-}
 
-/* ニコちゃんマーク :） のスタイル */
-h1 {
-  position: absolute;
-  bottom: 60px;
-  right: -120px; /* もっと右に120pxはみ出す */
-  margin: 0;
-  animation: swing 3s ease-in-out infinite;
-  transform-origin: top center;
 }
 
 /* 振り子風に左右に揺れるアニメーション */
