@@ -32,14 +32,6 @@ nav a {
 /* ？マークのスタイルとアニメーション */
 
 }
-
-/* 振り子風に左右に揺れるアニメーション */
-@keyframes swing {
-  0%   { transform: rotate(10deg); }
-  50%  { transform: rotate(-10deg); }
-  100% { transform: rotate(10deg); }
-}
-
 /* popup 見た目 */
 #popup {
   position: fixed;
