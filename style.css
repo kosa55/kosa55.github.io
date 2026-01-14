@@ -119,3 +119,27 @@ h1 {
 .objects-dot a:hover{
   text-decoration: underline;
 }
+
+
+
+:root{
+  --bg: #8195b1;
+  --text: #0b1220;
+
+  /* 同系色の濃淡（ホバーや枠に使える） */
+  --bg-dark: #586e8e;   /* ちょい濃い */
+  --bg-light:#b0bdce;   /* ちょい明るい */
+}
+
+body{
+  background: var(--bg);
+  color: var(--text);
+}
+
+a{ color: var(--text); }
+a:hover{ color: var(--bg-dark); }
+
+.card{
+  background: rgba(255,255,255,0.25); /* “ガラスっぽい”面 */
+  border: 1px solid rgba(11,18,32,0.25);
+}
