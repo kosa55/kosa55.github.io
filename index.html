@@ -54,7 +54,50 @@
 <a href="looking.pdf" target="_blank" class="pdf-thumb" id="pdfThumb">
   <img src="looking_page1.png" alt="looking pdf">
 </a>
+<script>
+  (function(){
+    const el = document.getElementById("pdfThumb");
+    if (!el) return;
 
+    let dragging = false;
+    let startX = 0, startY = 0;
+    let startLeft = 0, startTop = 0;
+
+    el.addEventListener("pointerdown", (e) => {
+      dragging = true;
+      el.setPointerCapture(e.pointerId);
+
+      const rect = el.getBoundingClientRect();
+      startX = e.clientX;
+      startY = e.clientY;
+      startLeft = rect.left;
+      startTop = rect.top;
+
+      el.dataset.dragged = "0";
+    });
+
+    el.addEventListener("pointermove", (e) => {
+      if (!dragging) return;
+
+      const dx = e.clientX - startX;
+      const dy = e.clientY - startY;
+
+      if (Math.abs(dx) + Math.abs(dy) > 3) el.dataset.dragged = "1";
+
+      el.style.left = (startLeft + dx) + "px";
+      el.style.top  = (startTop + dy) + "px";
+    });
+
+    el.addEventListener("pointerup", () => {
+      dragging = false;
+    });
+
+    // ドラッグしたときはPDFを開かない
+    el.addEventListener("click", (e) => {
+      if (el.dataset.dragged === "1") e.preventDefault();
+    });
+  })();
+</script>
 
    
 </body>
