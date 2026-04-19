@@ -52,17 +52,17 @@
   </script>
 
 
-  <div class="pdf-thumb" id="pdfThumb">
+<div class="pdf-thumb" id="pdfThumb1">
   <img src="looking_page1.png" alt="looking pdf">
 </div>
 
-  <div class="pdf-thumb" id="pdfThumb2">
+<div class="pdf-thumb" id="pdfThumb2">
   <img src="paper2.png" alt="second paper">
 </div>
-  
+
 <script>
-  (function(){
-    const el = document.getElementById("pdfThumb");
+  function makeDraggable(id) {
+    const el = document.getElementById(id);
     if (!el) return;
 
     let dragging = false;
@@ -91,20 +91,19 @@
       if (Math.abs(dx) + Math.abs(dy) > 3) el.dataset.dragged = "1";
 
       el.style.left = (startLeft + dx) + "px";
-      el.style.top  = (startTop + dy) + "px";
+      el.style.top = (startTop + dy) + "px";
     });
 
     el.addEventListener("pointerup", () => {
       dragging = false;
     });
 
-    // ドラッグしたときはPDFを開かない
     el.addEventListener("click", (e) => {
       if (el.dataset.dragged === "1") e.preventDefault();
     });
-  })();
+  }
 
-   makeDraggable("pdfThumb1");
+  makeDraggable("pdfThumb1");
   makeDraggable("pdfThumb2");
 </script>
 
