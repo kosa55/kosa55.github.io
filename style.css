@@ -147,3 +147,24 @@ a:hover{ color: var(--bg-dark); }
   display: block;
   pointer-events: none; /* ←画像じゃなくてaタグを掴む */
 }
+
+.pdf-thumb {
+  position: absolute;
+  cursor: grab;
+}
+
+#pdfThumb1 {
+  left: 100px;
+  top: 120px;
+}
+
+#pdfThumb2 {
+  left: 260px;
+  top: 180px;
+}
+
+.pdf-thumb img {
+  width: 120px;   /* 好きな大きさに変えてOK */
+  height: auto;
+  display: block;
+}
