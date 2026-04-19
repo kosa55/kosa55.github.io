@@ -55,6 +55,11 @@
   <div class="pdf-thumb" id="pdfThumb">
   <img src="looking_page1.png" alt="looking pdf">
 </div>
+
+  <div class="pdf-thumb" id="pdfThumb2">
+  <img src="paper2.png" alt="second paper">
+</div>
+  
 <script>
   (function(){
     const el = document.getElementById("pdfThumb");
@@ -98,6 +103,9 @@
       if (el.dataset.dragged === "1") e.preventDefault();
     });
   })();
+
+   makeDraggable("pdfThumb1");
+  makeDraggable("pdfThumb2");
 </script>
 
    
